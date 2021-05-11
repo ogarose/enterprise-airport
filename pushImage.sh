@@ -9,4 +9,4 @@ if [ -z "$1" ]; then
   imageTag=latest
 fi
 
-bash service/pushImage.sh $imageTag
+bash mainservice/pushImage.sh $imageTag
