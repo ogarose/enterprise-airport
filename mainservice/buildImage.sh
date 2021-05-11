@@ -14,6 +14,6 @@ imageFullName=$repositoryName:$imageTag
 
 echo "Building service app image."
 
-(exec "${BASH_SOURCE%/*}/../gradlew" :service:bootBuildImage --imageName $imageFullName)
+(exec "${BASH_SOURCE%/*}/../gradlew" :mainservice:bootBuildImage --imageName $imageFullName)
 
 echo "Image has been build. Image: $imageFullName"
