@@ -5,8 +5,11 @@
 plugins {
     // Apply the java Plugin to add support for Java.
     java
+
     pmd
     id("org.owasp.dependencycheck")
+    checkstyle
+    jacoco
 }
 
 repositories {
@@ -15,26 +18,31 @@ repositories {
 }
 
 dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation("org.apache.commons:commons-text:1.9")
-    }
-
-    // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-
-    // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
-
-//checkstyle {
-//    maxWarnings = 0
-//}
 
 tasks.test {
     // Use junit platform for unit tests.
     useJUnitPlatform()
+
+    finalizedBy(tasks.jacocoTestReport)
+    finalizedBy(tasks.jacocoTestCoverageVerification)
 }
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.5".toBigDecimal()
+            }
+        }
+    }
+}
+
 
 tasks.withType<Pmd> {
     isConsoleOutput = true
@@ -46,4 +54,10 @@ tasks.withType<Pmd> {
 tasks.getByName<Pmd>("pmdTest") {
     ruleSets = listOf()
     ruleSetFiles = files("$rootDir/config/pmd/custom_test_rules.xml")
+}
+
+configure<CheckstyleExtension> {
+    toolVersion = "8.40"
+    isIgnoreFailures = false
+    maxWarnings = 0
 }
