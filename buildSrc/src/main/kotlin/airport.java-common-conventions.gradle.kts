@@ -5,6 +5,8 @@
 plugins {
     // Apply the java Plugin to add support for Java.
     java
+    pmd
+    id("org.owasp.dependencycheck")
 }
 
 repositories {
@@ -25,7 +27,23 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
+//checkstyle {
+//    maxWarnings = 0
+//}
+
 tasks.test {
     // Use junit platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks.withType<Pmd> {
+    isConsoleOutput = true
+    rulesMinimumPriority.set(5)
+    ruleSetFiles = files("$rootDir/config/pmd/custom_rules.xml")
+    ruleSets = listOf()
+}
+
+tasks.getByName<Pmd>("pmdTest") {
+    ruleSets = listOf()
+    ruleSetFiles = files("$rootDir/config/pmd/custom_test_rules.xml")
 }

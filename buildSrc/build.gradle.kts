@@ -10,4 +10,9 @@ plugins {
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.owasp:dependency-check-gradle:6.1.6")
 }
