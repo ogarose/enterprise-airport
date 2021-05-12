@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "airport"
-include("mainservice")
+include("mainapp")

@@ -1,10 +1,10 @@
-package com.enterprise.airport.mainservice;
+package com.enterprise.airport.mainapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TheMainServiceOfAirpotApplicationTests {
+class TheMainAppOfAirportApplicationTests {
 
     @Test
     void contextLoads() {

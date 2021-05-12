@@ -1,4 +1,4 @@
-package com.enterprise.airport.mainservice;
+package com.enterprise.airport.mainapp;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

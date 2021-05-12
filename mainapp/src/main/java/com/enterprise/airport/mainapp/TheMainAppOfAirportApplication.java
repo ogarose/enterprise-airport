@@ -1,12 +1,12 @@
-package com.enterprise.airport.mainservice;
+package com.enterprise.airport.mainapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TheMainServiceOfAirportApplication {
+public class TheMainAppOfAirportApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TheMainServiceOfAirportApplication.class, args);
+        SpringApplication.run(TheMainAppOfAirportApplication.class, args);
     }
 }

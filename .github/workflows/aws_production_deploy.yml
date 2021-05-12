@@ -68,7 +68,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: deployment/production/mainservice/mainServiceTask.json
+        task-definition: deployment/production/mainapp/mainAppTask.json
         container-name: mainapp
         image: ${{ steps.build-image.outputs.image }}
 
