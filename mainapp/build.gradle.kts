@@ -7,8 +7,10 @@ plugins {
 
 }
 
+//val appVersion: String by project.extra("version")
+
 group = "com.enterprise.airport"
-version = "0.0.1-SNAPSHOT"
+//version = appVersion
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 dependencies {

@@ -8,13 +8,24 @@ It is multimodule project.
 
 ## CI / CD
 
-The project is hosted by AWS. Each push to "master" branch raises deployment to production.
+The project is hosted by AWS. Each New tag raises deployment to production.
 
 
-### Task:
-**Show the list of update candidate dependencies**
+###Run a new Production deployment
+For the deployment we use Gradle Plugin https://github.com/researchgate/gradle-release. 
 
-Run the task dependencyUpdates 
+To run new deployment to prod run command
+```bash
+gradle :mainapp:release
+```
+
+### Helpers 
+
+#### Show the list of update candidate dependencies
+
+Run the task dependencyUpdates
+
+####  
 
 
 ## TODO
