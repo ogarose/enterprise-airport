@@ -8,6 +8,6 @@ public class MainController {
 
     @GetMapping("/")
     public String indexPage() {
-        return "Hello, world! Version 1.1";
+        return "Hello, world! Version 1.2";
     }
 }

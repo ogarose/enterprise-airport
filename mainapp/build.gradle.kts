@@ -3,6 +3,8 @@ plugins {
 
     id("org.springframework.boot") version "2.4.5"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("net.researchgate.release") version "2.8.1"
+
 }
 
 group = "com.enterprise.airport"
