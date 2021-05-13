@@ -16,7 +16,7 @@ For the deployment we use Gradle Plugin https://github.com/researchgate/gradle-r
 
 To run new deployment to prod run command
 ```bash
-gradle :mainapp:release
+./gradlew :mainapp:release
 ```
 
 ### Helpers 
