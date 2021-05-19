@@ -1,5 +1,6 @@
 package com.enterprise.airport.mainapp;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,5 +23,10 @@ public class MainControllerTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello")));
+    }
+
+    @Test
+    public void test() throws Exception {
+        Assertions.assertTrue(false);
     }
 }
