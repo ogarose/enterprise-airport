@@ -1,1 +1,5 @@
 Miro board https://miro.com/app/board/o9J_lGWpyLc=/
+
+Contains:
+1. User Story Map
+2. Architecture Decision of Architecture Design. (справа от User Story Map)
