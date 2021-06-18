@@ -110,7 +110,7 @@
   </rule>
   <rule ref="category/java/design.xml/CyclomaticComplexity">
     <properties>
-      <property name="methodReportLevel" value="15"/>
+      <property name="methodReportLevel" value="6"/>
     </properties>
   </rule>
   <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">

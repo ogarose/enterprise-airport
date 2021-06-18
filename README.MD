@@ -8,7 +8,10 @@ It is multimodule project.
 
 ## Project workflow
 
-The project is use on Trunk based development.  
+The project is based on Trunk based development.  
+
+## Initial setup
+- run initialSetup.sh
 
 ## CI / CD
 
@@ -45,6 +48,9 @@ Steps of the deployment:
 
 #### Show the list of the update candidate dependencies
 The task: dependencyUpdates
+The task runs as a dependency for :check command, as the result it runs every build as well.
+
+To check common gradle plugin dependencies run the script checkAllDependencies.sh.  
 
 #### Checkstyle of the code
 The tasks: checkstyleMain and checkstyleTest

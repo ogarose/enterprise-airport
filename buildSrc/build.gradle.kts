@@ -15,4 +15,5 @@ repositories {
 
 dependencies {
     implementation("org.owasp:dependency-check-gradle:6.1.6")
+    implementation("com.github.ben-manes:gradle-versions-plugin:0.38.0")
 }
