@@ -32,7 +32,7 @@ on:
     tags:
       - '*'
 
-name: Deploy to Amazon ECS
+name: Deploy
 
 jobs:
   deploy:

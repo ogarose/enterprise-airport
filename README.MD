@@ -1,3 +1,7 @@
+![Deploy](https://github.com/ogarose/enterprise-airport/actions/workflows/aws_production_deploy.yml/badge.svg)
+![Build check](https://github.com/ogarose/enterprise-airport/actions/workflows/aws_production_deploy.yml/gradle_build.yml)
+
+
 ## Airport Enterprise Application
 **Created during the course "Development Enterprise Applications"**
 
@@ -32,7 +36,7 @@ For the deployment we use Gradle Plugin https://github.com/researchgate/gradle-r
 
 Switch to master branch and run next command.
 ```bash
-./gradlew :mainapp:release
+./gradlew :release
 ```
 
 Steps of the deployment:
