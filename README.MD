@@ -1,5 +1,5 @@
 ![Deploy](https://github.com/ogarose/enterprise-airport/actions/workflows/aws_production_deploy.yml/badge.svg)
-![Build check](https://github.com/ogarose/enterprise-airport/actions/workflows/aws_production_deploy.yml/gradle_build.yml)
+![Build check](https://github.com/ogarose/enterprise-airport/actions/workflows/gradle_build.yml/badge.svg)
 
 
 ## Airport Enterprise Application
