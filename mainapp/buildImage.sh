@@ -16,4 +16,4 @@ echo "Building service app image."
 
 (exec "${BASH_SOURCE%/*}/../gradlew" :mainapp:bootBuildImage --imageName $imageFullName)
 
-echo "Image has been build. Image: $imageFullName"
+echo "Image has been built. Image: $imageFullName"

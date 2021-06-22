@@ -1,3 +1,7 @@
+![Deploy](https://github.com/ogarose/enterprise-airport/actions/workflows/aws_production_deploy.yml/badge.svg)
+![Build check](https://github.com/ogarose/enterprise-airport/actions/workflows/gradle_build.yml/badge.svg)
+
+
 ## Airport Enterprise Application
 **Created during the course "Development Enterprise Applications"**
 
@@ -8,7 +12,10 @@ It is multimodule project.
 
 ## Project workflow
 
-The project is use on Trunk based development.  
+The project is based on Trunk based development.  
+
+## Initial setup
+- run initialSetup.sh
 
 ## CI / CD
 
@@ -29,7 +36,7 @@ For the deployment we use Gradle Plugin https://github.com/researchgate/gradle-r
 
 Switch to master branch and run next command.
 ```bash
-./gradlew :mainapp:release
+./gradlew :release
 ```
 
 Steps of the deployment:
@@ -45,6 +52,9 @@ Steps of the deployment:
 
 #### Show the list of the update candidate dependencies
 The task: dependencyUpdates
+The task runs as a dependency for :check command, as the result it runs every build as well.
+
+To check common gradle plugin dependencies run the script checkAllDependencies.sh.  
 
 #### Checkstyle of the code
 The tasks: checkstyleMain and checkstyleTest

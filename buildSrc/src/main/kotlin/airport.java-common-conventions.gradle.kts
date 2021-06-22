@@ -10,6 +10,7 @@ plugins {
     id("org.owasp.dependencycheck")
     checkstyle
     jacoco
+    id("com.github.ben-manes.versions")
 }
 
 repositories {
@@ -43,6 +44,9 @@ tasks.jacocoTestCoverageVerification {
     }
 }
 
+tasks.check {
+    dependsOn(tasks.dependencyUpdates)
+}
 
 tasks.withType<Pmd> {
     isConsoleOutput = true
