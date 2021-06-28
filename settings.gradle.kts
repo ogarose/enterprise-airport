@@ -8,4 +8,9 @@
  */
 
 rootProject.name = "airport"
+
 include("mainapp")
+include("common:types")
+
+include("leasing")
+include("leasing:domain")

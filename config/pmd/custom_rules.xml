@@ -57,6 +57,7 @@
     <exclude name="ClassNamingConventions"/>
     <!--Calling the super constructor explicitly is not necessary in most cases.-->
     <exclude name="CallSuperInConstructor"/>
+    <exclude name="DefaultPackage"/>
   </rule>
   <rule ref="category/java/codestyle.xml/ShortVariable">
     <properties>
@@ -110,7 +111,7 @@
   </rule>
   <rule ref="category/java/design.xml/CyclomaticComplexity">
     <properties>
-      <property name="methodReportLevel" value="6"/>
+      <property name="methodReportLevel" value="10"/>
     </properties>
   </rule>
   <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
@@ -162,4 +163,11 @@
     <!-- Clarity always wins -->
     <exclude name="SimplifyStartsWith"/>
   </rule>
+
+  <rule ref="category/java/errorprone.xml/MissingSerialVersionUID">
+    <properties>
+      <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[matches(@SimpleName, '^.*Exception$')]"/>
+    </properties>
+  </rule>
+
 </ruleset>

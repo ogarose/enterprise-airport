@@ -51,6 +51,6 @@ url="$2"
 #done
 
 # validate the project before push
-./gradlew test
+./gradlew check
 
 #exit 0
