@@ -11,10 +11,10 @@ public final class AircraftRestorer {
     public static Aircraft restore(
             AircraftId id,
             Version version,
-            AircraftMark mark,
-            Double loadCapacity,
+            AircraftModel mark,
+            AircraftLoadCapacity aircraftLoadCapacity,
             LocalDate issueDate,
-            AircraftLicenseNumber licenseNumber,
+            AircraftRegistration licenseNumber,
             AircraftSeats seats,
             AircraftContractNumber contractNumber
     ) {
@@ -22,7 +22,7 @@ public final class AircraftRestorer {
                 id,
                 version,
                 mark,
-                loadCapacity,
+                aircraftLoadCapacity,
                 issueDate,
                 licenseNumber,
                 seats,

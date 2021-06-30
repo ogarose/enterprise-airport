@@ -7,7 +7,7 @@ import lombok.Value;
 
 @EqualsAndHashCode(callSuper = false)
 @Value
-public class AircraftContractNumber extends ValueObject {
+public class AircraftContractNumber implements ValueObject {
     String value;
 
     public AircraftContractNumber(String value) {

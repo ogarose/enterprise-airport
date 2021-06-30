@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public final class Version extends ValueObject {
+public final class Version implements ValueObject {
     private final Long value;
 
     private Version(Long value) {

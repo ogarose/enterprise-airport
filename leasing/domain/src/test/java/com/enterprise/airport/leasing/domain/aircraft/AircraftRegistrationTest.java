@@ -3,26 +3,26 @@ package com.enterprise.airport.leasing.domain.aircraft;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class AircraftLicenseNumberTest {
+class AircraftRegistrationTest {
 
     @Test
     void createLicenseNumber() {
-        var number = "654 5 dt";
-        var licenseNumber = new AircraftLicenseNumber(number);
+        var number = "N547RF";
+        var licenseNumber = new AircraftRegistration(number);
 
         Assertions.assertEquals(number, licenseNumber.getValue());
     }
 
     @Test
     void exceptionWhenEmpty() {
-        Assertions.assertThrows(AircraftLicenseNumber.EmptyException.class, () -> new AircraftLicenseNumber(""));
+        Assertions.assertThrows(AircraftRegistration.EmptyException.class, () -> new AircraftRegistration(""));
     }
 
     @Test
     void exceptionWhenWrongFormat() {
         Assertions.assertThrows(
-                AircraftLicenseNumber.WrongFormatException.class,
-                () -> new AircraftLicenseNumber("6548 sasf")
+                AircraftRegistration.WrongFormatException.class,
+                () -> new AircraftRegistration("6548 sasf")
         );
     }
 }

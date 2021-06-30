@@ -8,26 +8,26 @@ import java.time.LocalDate;
 
 @Getter
 public class Aircraft extends AggregateRoot<AircraftId> {
-    private AircraftMark mark;
-    private Double loadCapacity;
+    private AircraftModel model;
+    private AircraftLoadCapacity aircraftLoadCapacity;
     private LocalDate issueDate;
-    private AircraftLicenseNumber licenseNumber;
+    private AircraftRegistration licenseNumber;
     private AircraftSeats seats;
     private AircraftContractNumber contractNumber;
 
     protected Aircraft(
             AircraftId id,
             Version version,
-            AircraftMark mark,
-            Double loadCapacity,
+            AircraftModel model,
+            AircraftLoadCapacity aircraftLoadCapacity,
             LocalDate issueDate,
-            AircraftLicenseNumber licenseNumber,
+            AircraftRegistration licenseNumber,
             AircraftSeats seats,
             AircraftContractNumber contractNumber
     ) {
         super(id, version);
-        this.mark = mark;
-        this.loadCapacity = loadCapacity;
+        this.model = model;
+        this.aircraftLoadCapacity = aircraftLoadCapacity;
         this.issueDate = issueDate;
         this.licenseNumber = licenseNumber;
         this.seats = seats;
@@ -36,18 +36,18 @@ public class Aircraft extends AggregateRoot<AircraftId> {
 
     public static Aircraft buy(
             AircraftIdGenerator idGenerator,
-            AircraftMark mark,
-            Double loadCapacity,
+            AircraftModel model,
+            AircraftLoadCapacity aircraftLoadCapacity,
             LocalDate issueDate,
-            AircraftLicenseNumber licenseNumber,
+            AircraftRegistration licenseNumber,
             AircraftSeats seats,
             AircraftContractNumber contractNumber
     ) {
         var aircraft = new Aircraft(
                 idGenerator.generate(),
                 Version.first(),
-                mark,
-                loadCapacity,
+                model,
+                aircraftLoadCapacity,
                 issueDate,
                 licenseNumber,
                 seats,

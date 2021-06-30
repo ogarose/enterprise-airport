@@ -7,10 +7,10 @@ import lombok.Value;
 
 @EqualsAndHashCode(callSuper = false)
 @Value
-public class AircraftLicenseNumber extends ValueObject {
+public class AircraftRegistration implements ValueObject {
     String value;
 
-    public AircraftLicenseNumber(String value) {
+    public AircraftRegistration(String value) {
         validate(value);
         this.value = value;
     }
@@ -20,14 +20,20 @@ public class AircraftLicenseNumber extends ValueObject {
             throw new EmptyException();
         }
 
-        if (!value.matches("\\d{3}\\s\\d\\s\\w{2}")) {
-            throw new WrongFormatException();
+        if (!value.matches("^[A-Z]-[A-Z]{4}|[A-Z]{2}-[A-Z]{3}|N[0-9]{1,5}[A-Z]{0,2}$")) {
+            throw new WrongFormatException(String.format("wrong value %s", value));
         }
     }
 
     static class EmptyException extends DomainException {
+        public EmptyException() {
+            super();
+        }
     }
 
     static class WrongFormatException extends DomainException {
+        public WrongFormatException(String message) {
+            super(message);
+        }
     }
 }

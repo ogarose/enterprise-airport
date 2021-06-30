@@ -1,11 +1,11 @@
 package com.enterprise.airport.leasing.domain.aircraft;
 
 import com.enterprise.airport.common.types.base.ValueObject;
-import lombok.EqualsAndHashCode;
 import lombok.Value;
 
-@EqualsAndHashCode(callSuper = false)
+import java.util.List;
+
 @Value
-public class AircraftSeats extends ValueObject {
-    boolean[][] seatsMap;
+public class AircraftSeats implements ValueObject {
+    List<String> value;
 }

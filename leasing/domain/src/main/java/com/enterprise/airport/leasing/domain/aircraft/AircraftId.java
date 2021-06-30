@@ -6,6 +6,6 @@ import lombok.Value;
 
 @EqualsAndHashCode(callSuper = false)
 @Value
-public class AircraftId extends ValueObject {
+public class AircraftId implements ValueObject {
     Long value;
 }
