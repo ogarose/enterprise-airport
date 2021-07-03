@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 class PriceTest {
     @Test
-    void getZeroPrice() {
+    void checkZeroPrice() {
         var price = Price.zero();
 
         Assertions.assertEquals("0.00", price.getValue().toPlainString());

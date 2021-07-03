@@ -3,7 +3,7 @@ package com.enterprise.airport.flightmanagement.domain.aircraft;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.common.AircraftModel;
 
-public class AircraftRestorer {
+public final class AircraftRestorer {
     private AircraftRestorer() {
     }
 

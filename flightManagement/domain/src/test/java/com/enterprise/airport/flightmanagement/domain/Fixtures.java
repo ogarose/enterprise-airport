@@ -2,10 +2,10 @@ package com.enterprise.airport.flightmanagement.domain;
 
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.common.AircraftModel;
+import com.enterprise.airport.common.types.common.Airport;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftRestorer;
-import com.enterprise.airport.flightmanagement.domain.airoport.Airport;
 import com.enterprise.airport.flightmanagement.domain.flight.Flight;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightId;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightRestorer;
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Fixtures {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
 
     public static Aircraft newAircraft() {
         return AircraftRestorer.restore(
@@ -53,15 +53,15 @@ public class Fixtures {
     }
 
     public static List<Ticket> generateListTicket(int count) {
-        var flightId = new FlightId(random.nextLong());
+        var flightId = new FlightId(RANDOM.nextLong());
 
         var list = new ArrayList<Ticket>();
 
         for (int i = 0; i < count; i++) {
             list.add(
                     TicketRestorer.restore(
-                            new TicketId(random.nextLong()),
-                            Version.from(random.nextLong()),
+                            new TicketId(RANDOM.nextLong()),
+                            Version.from(RANDOM.nextLong()),
                             flightId,
                             Price.from(BigDecimal.ONE.setScale(2))
                     )

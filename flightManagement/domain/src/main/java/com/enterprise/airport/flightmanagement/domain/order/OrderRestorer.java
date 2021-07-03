@@ -5,7 +5,7 @@ import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 
 import java.util.Map;
 
-public class OrderRestorer {
+public final class OrderRestorer {
     private OrderRestorer() {
     }
 

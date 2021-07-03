@@ -4,6 +4,7 @@ import com.enterprise.airport.common.types.base.DomainEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
+@SuppressWarnings("PMD.MissingStaticMethodInNonInstantiatableClass")
 public class TicketEvent {
     private TicketEvent() {
     }

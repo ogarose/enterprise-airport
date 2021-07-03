@@ -3,7 +3,7 @@ package com.enterprise.airport.flightmanagement.domain.ticket;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightId;
 
-public class TicketRestorer {
+public final class TicketRestorer {
     private TicketRestorer() {
     }
 

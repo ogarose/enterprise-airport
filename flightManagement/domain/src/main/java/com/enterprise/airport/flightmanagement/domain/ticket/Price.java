@@ -34,8 +34,5 @@ public class Price {
     }
 
     public static class NegativeException extends DomainException {
-        public NegativeException() {
-            super();
-        }
     }
 }

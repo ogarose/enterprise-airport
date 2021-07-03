@@ -56,7 +56,9 @@ public class Order extends AggregateRoot<OrderId> {
         var createdOrder = new Order(
                 idGenerator.generate(),
                 Version.first(),
-                passengers.entrySet().stream().collect(Collectors.toMap(t -> t.getKey().getId(), Map.Entry::getValue)),
+                passengers.entrySet().stream().collect(
+                        Collectors.toMap(entry -> entry.getKey().getId(), Map.Entry::getValue)
+                ),
                 customerEmail,
                 OrderStatus.CREATED
         );

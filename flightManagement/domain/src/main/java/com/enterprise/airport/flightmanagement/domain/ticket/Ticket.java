@@ -58,14 +58,8 @@ public class Ticket extends AggregateRoot<TicketId> {
     }
 
     public static class LessThan1HourToDepartureException extends DomainException {
-        public LessThan1HourToDepartureException() {
-            super();
-        }
     }
 
     public static class FlightIsNotAnnouncedException extends DomainException {
-        public FlightIsNotAnnouncedException() {
-            super();
-        }
     }
 }

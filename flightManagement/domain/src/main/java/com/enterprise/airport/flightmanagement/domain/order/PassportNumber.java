@@ -16,12 +16,12 @@ public class PassportNumber implements ValueObject {
 
     private void validate(String value) {
         if (value == null || !value.matches("^[A-Z]{2}\\d{7}$")) {
-            throw new WrongPassportNumberFormat(String.format("Wrong number: %s", value));
+            throw new WrongPassportNumberFormatException(String.format("Wrong number: %s", value));
         }
     }
 
-    public static class WrongPassportNumberFormat extends DomainException {
-        public WrongPassportNumberFormat(String message) {
+    public static class WrongPassportNumberFormatException extends DomainException {
+        public WrongPassportNumberFormatException(String message) {
             super(message);
         }
     }

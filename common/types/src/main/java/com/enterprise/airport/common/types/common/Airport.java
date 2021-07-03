@@ -1,4 +1,4 @@
-package com.enterprise.airport.flightmanagement.domain.airoport;
+package com.enterprise.airport.common.types.common;
 
 public enum Airport {
     JP,
