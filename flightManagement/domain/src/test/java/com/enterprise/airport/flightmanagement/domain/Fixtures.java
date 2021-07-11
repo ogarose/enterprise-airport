@@ -13,6 +13,7 @@ import com.enterprise.airport.flightmanagement.domain.order.Email;
 import com.enterprise.airport.flightmanagement.domain.order.FullName;
 import com.enterprise.airport.flightmanagement.domain.order.Order;
 import com.enterprise.airport.flightmanagement.domain.order.OrderId;
+import com.enterprise.airport.flightmanagement.domain.order.OrderItem;
 import com.enterprise.airport.flightmanagement.domain.order.OrderRestorer;
 import com.enterprise.airport.flightmanagement.domain.order.OrderStatus;
 import com.enterprise.airport.flightmanagement.domain.order.Passenger;
@@ -25,7 +26,6 @@ import com.enterprise.airport.flightmanagement.domain.ticket.TicketRestorer;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -75,14 +75,24 @@ public class Fixtures {
         return OrderRestorer.restore(
                 new OrderId(123L),
                 Version.from(654L),
-                new HashMap<>() {{
-                    put(new TicketId(854L), new Passenger(
-                            new FullName("Antit", "Baititi"),
-                            new PassportNumber("AS8879645")
+                new ArrayList<>() {{
+                    add(new OrderItem(
+                            new TicketId(854L),
+                            new Passenger(
+                                    new FullName("Antit", "Baititi"),
+                                    new PassportNumber("AS8879645")
+                            )
                     ));
                 }},
                 new Email("qwer@tutut.ba"),
                 OrderStatus.CREATED
+        );
+    }
+
+    public static Passenger generatePassenger() {
+        return new Passenger(
+                new FullName("Abib" + RANDOM.nextInt(), "Abeba" + RANDOM.nextInt()),
+                new PassportNumber("KS" + (1_000_000 + RANDOM.nextInt(999_999)))
         );
     }
 }

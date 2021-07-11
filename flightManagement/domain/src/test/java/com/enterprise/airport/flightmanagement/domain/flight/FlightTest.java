@@ -9,26 +9,9 @@ import java.time.LocalDateTime;
 
 class FlightTest {
     @Test
-    void canNotAnnounceFlightForNotInExploitationFlight() {
-        Assertions.assertThrows(Flight.AircraftNotInExploitationException.class, () -> {
-            Flight.announceFlight(
-                    (aircraftId) -> false,
-                    (aircraftId) -> false,
-                    (airport, departureTime) -> true,
-                    () -> new FlightId(25L),
-                    Airport.AC,
-                    Airport.G9,
-                    LocalDateTime.of(2021, 3, 10, 10, 55),
-                    Fixtures.newAircraft()
-            );
-        });
-    }
-
-    @Test
     void canNotAnnounceFlightForOccupiedAircraft() {
         Assertions.assertThrows(Flight.AircraftIsOccupiedByAnotherFlightException.class, () -> {
             Flight.announceFlight(
-                    (aircraftId) -> true,
                     (aircraftId) -> true,
                     (airport, departureTime) -> true,
                     () -> new FlightId(25L),
@@ -44,7 +27,6 @@ class FlightTest {
     void canNotAnnounceFlightForNorAllowedDepartureTime() {
         Assertions.assertThrows(Flight.DepartureTimeIsNotAllowedException.class, () -> {
             Flight.announceFlight(
-                    (aircraftId) -> true,
                     (aircraftId) -> false,
                     (airport, departureTime) -> false,
                     () -> new FlightId(25L),
@@ -59,7 +41,6 @@ class FlightTest {
     @Test
     void announceFlight() {
         var announcedFlight = Flight.announceFlight(
-                (aircraftId) -> true,
                 (aircraftId) -> false,
                 (airport, departureTime) -> true,
                 () -> new FlightId(25L),

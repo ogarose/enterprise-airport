@@ -6,7 +6,6 @@ import com.enterprise.airport.common.types.common.Airport;
 import com.enterprise.airport.common.types.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
-import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftIsInExploitation;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftIsOccupiedByAnotherFlight;
 import com.enterprise.airport.flightmanagement.domain.airoport.AirportAllowDepartureTime;
 import lombok.Getter;
@@ -36,7 +35,6 @@ public class Flight extends AggregateRoot<FlightId> {
     }
 
     public static Flight announceFlight(
-            AircraftIsInExploitation aircraftIsInExploitation,
             AircraftIsOccupiedByAnotherFlight aircraftIsOccupied,
             AirportAllowDepartureTime departureTimeAllowed,
             FlightIdGenerator flightIdGenerator,
@@ -45,10 +43,6 @@ public class Flight extends AggregateRoot<FlightId> {
             LocalDateTime departureTime,
             Aircraft aircraft
     ) {
-        if (!aircraftIsInExploitation.check(aircraft.getId())) {
-            throw new AircraftNotInExploitationException();
-        }
-
         if (aircraftIsOccupied.check(aircraft.getId())) {
             throw new AircraftIsOccupiedByAnotherFlightException();
         }
@@ -69,9 +63,6 @@ public class Flight extends AggregateRoot<FlightId> {
         flight.addEvent(new FlightEvent.FlightAnnounced(flight.getId()));
 
         return flight;
-    }
-
-    public static class AircraftNotInExploitationException extends DomainException {
     }
 
     public static class AircraftIsOccupiedByAnotherFlightException extends DomainException {

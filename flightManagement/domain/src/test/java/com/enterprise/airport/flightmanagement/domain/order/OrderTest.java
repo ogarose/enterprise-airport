@@ -13,18 +13,9 @@ class OrderTest {
         //Given we have 3 published tickets
         var tickets = Fixtures.generateListTicket(3);
         //AND 3 passengers who want to buy tickets
-        var passenger1 = new Passenger(
-                new FullName("Abib", "Abeba"),
-                new PassportNumber("KS9875678")
-        );
-        var passenger2 = new Passenger(
-                new FullName("Slk", "Izmailov"),
-                new PassportNumber("KS4878787")
-        );
-        var passenger3 = new Passenger(
-                new FullName("Ilk", "Bobo"),
-                new PassportNumber("DS9876542")
-        );
+        var passenger1 = Fixtures.generatePassenger();
+        var passenger2 = Fixtures.generatePassenger();
+        var passenger3 = Fixtures.generatePassenger();
 
         //When customer creates order for the tickets
         var order = Order.create(
@@ -47,9 +38,25 @@ class OrderTest {
         Assertions.assertEquals(order.getId(), orderCreatedEvent.getOrderId());
 
         //AND order has passengers by ticket's id
-        Assertions.assertEquals(order.getPassengers().get(tickets.get(0).getId()), passenger1);
-        Assertions.assertEquals(order.getPassengers().get(tickets.get(1).getId()), passenger2);
-        Assertions.assertEquals(order.getPassengers().get(tickets.get(2).getId()), passenger3);
+        Assertions.assertEquals(3, order.getOrderItems().size());
+        Assertions.assertTrue(order.getOrderItems().stream()
+                .anyMatch(
+                        orderItem -> orderItem.getBookedTicketId().equals(tickets.get(0).getId())
+                                && orderItem.getPassenger().equals(passenger1)
+                )
+        );
+        Assertions.assertTrue(order.getOrderItems().stream()
+                .anyMatch(
+                        orderItem -> orderItem.getBookedTicketId().equals(tickets.get(1).getId())
+                                && orderItem.getPassenger().equals(passenger2)
+                )
+        );
+        Assertions.assertTrue(order.getOrderItems().stream()
+                .anyMatch(
+                        orderItem -> orderItem.getBookedTicketId().equals(tickets.get(2).getId())
+                                && orderItem.getPassenger().equals(passenger3)
+                )
+        );
     }
 
     @Test

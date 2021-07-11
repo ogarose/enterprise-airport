@@ -5,32 +5,36 @@ import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.ticket.IsTicketAvailable;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
-import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Getter
 public class Order extends AggregateRoot<OrderId> {
-    private Map<TicketId, Passenger> passengers;
+    private List<OrderItem> orderItems;
     private Email customerEmail;
     private OrderStatus status;
 
     public Order(
             OrderId id,
             Version first,
-            Map<TicketId, Passenger> passengers,
+            List<OrderItem> orderItems,
             Email customerEmail,
             OrderStatus status
     ) {
         super(id, first);
-        this.passengers = passengers;
+        this.orderItems = orderItems;
         this.customerEmail = customerEmail;
         this.status = status;
     }
 
     public void pay() {
+        if (status == OrderStatus.PAID) {
+            return;
+        }
+
         if (!status.canBeChangeTo(OrderStatus.PAID)) {
             throw new CanNotSetToPaidException();
         }
@@ -56,8 +60,9 @@ public class Order extends AggregateRoot<OrderId> {
         var createdOrder = new Order(
                 idGenerator.generate(),
                 Version.first(),
-                passengers.entrySet().stream().collect(
-                        Collectors.toMap(entry -> entry.getKey().getId(), Map.Entry::getValue)
+                passengers.entrySet().stream()
+                        .map(entry -> new OrderItem(entry.getKey().getId(), entry.getValue()))
+                        .collect(Collectors.toList()
                 ),
                 customerEmail,
                 OrderStatus.CREATED

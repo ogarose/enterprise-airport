@@ -1,9 +1,8 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
 import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 
-import java.util.Map;
+import java.util.List;
 
 public final class OrderRestorer {
     private OrderRestorer() {
@@ -12,10 +11,10 @@ public final class OrderRestorer {
     public static Order restore(
             OrderId id,
             Version first,
-            Map<TicketId, Passenger> passengers,
+            List<OrderItem> orderItems,
             Email customerEmail,
             OrderStatus status
     ) {
-        return new Order(id, first, passengers, customerEmail, status);
+        return new Order(id, first, orderItems, customerEmail, status);
     }
 }
