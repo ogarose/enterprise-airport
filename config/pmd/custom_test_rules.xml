@@ -28,6 +28,7 @@
     <!-- Four is still okay for system tests -->
     <exclude name="JUnitTestContainsTooManyAsserts"/>
     <exclude name="JUnitAssertionsShouldIncludeMessage" />
+    <exclude name="DoubleBraceInitialization" />
   </rule>
 
   <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts">
@@ -105,6 +106,7 @@
     <exclude name="NPathComplexity"/>
     <exclude name="ExcessiveParameterList"/>
     <exclude name="SignatureDeclareThrowsException"/>
+    <exclude name="UseUtilityClass"/>
   </rule>
 
   <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">

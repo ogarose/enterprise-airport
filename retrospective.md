@@ -2,3 +2,4 @@
   + +Make model class clear from infrastructure.
   - -Small leak of infrastructure to domain. Domain does not require it. But, Model is not coupled with it and Restorer does not have the highest cohesion with Model. So it may be ok. 
 - Named factory method for model (e.g. AircraftRestorer::buy) with Restorer class gives more clear model.  
+- Mother Objects factory for tests (Fixtures) 

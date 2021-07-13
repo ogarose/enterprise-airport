@@ -1,4 +1,5 @@
-package com.enterprise.airport.leasing.domain.aircraft;
+package com.enterprise.airport.common.types.common;
+
 
 public enum AircraftModel {
     BOEING_747("747"),

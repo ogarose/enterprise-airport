@@ -1,6 +1,7 @@
 package com.enterprise.airport.leasing.domain.aircraft;
 
 import com.enterprise.airport.common.types.base.Version;
+import com.enterprise.airport.common.types.common.AircraftModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
