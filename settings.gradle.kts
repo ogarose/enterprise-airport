@@ -14,6 +14,7 @@ include("common:types")
 
 include("leasing")
 include("leasing:domain")
+include("leasing:usecase")
 
 include("flightManagement")
 include("flightManagement:domain")

@@ -39,7 +39,7 @@ class AircraftRestorerTest {
         Assertions.assertEquals(version, aircraft.getVersion());
         Assertions.assertEquals(contractNumber, aircraft.getContractNumber());
         Assertions.assertEquals(issueDate, aircraft.getIssueDate());
-        Assertions.assertEquals(licenseNumber, aircraft.getLicenseNumber());
+        Assertions.assertEquals(licenseNumber, aircraft.getRegistration());
         Assertions.assertEquals(loadCapacity, aircraft.getAircraftLoadCapacity());
         Assertions.assertEquals(mark, aircraft.getModel());
 
