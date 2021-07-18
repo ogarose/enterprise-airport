@@ -22,4 +22,6 @@ include("flightManagement:usecase")
 
 include("maintenance")
 include("maintenance:domain")
+include("maintenance:usecase")
+
 include("integration")
