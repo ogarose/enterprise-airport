@@ -3,8 +3,8 @@ package com.enterprise.airport.flightmanagement.domain.order;
 import com.enterprise.airport.common.types.base.AggregateRoot;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.exception.DomainException;
-import com.enterprise.airport.flightmanagement.domain.ticket.IsTicketAvailable;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
+import com.enterprise.airport.flightmanagement.domain.ticket.TicketAvailable;
 import lombok.Getter;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     public static Order create(
-            IsTicketAvailable isTicketAvailable,
+            TicketAvailable isTicketAvailable,
             OrderIdGenerator idGenerator,
             Map<Ticket, Passenger> passengers,
             Email customerEmail

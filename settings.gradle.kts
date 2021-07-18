@@ -18,6 +18,8 @@ include("leasing:usecase")
 
 include("flightManagement")
 include("flightManagement:domain")
+include("flightManagement:usecase")
 
 include("maintenance")
 include("maintenance:domain")
+include("integration")

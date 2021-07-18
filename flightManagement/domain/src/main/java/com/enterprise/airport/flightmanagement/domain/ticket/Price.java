@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Value()
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Price {
-    private static final int SCALE = 2;
+    public static final int SCALE = 2;
 
     BigDecimal value;
 

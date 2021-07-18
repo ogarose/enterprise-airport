@@ -9,9 +9,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 class BuyAircraftUseCaseTest {
+
+    private final AircraftPersisterUtil persister = new AircraftPersisterUtil();
+
     @Test
     void buyAircraft() {
-        var persister = new AircraftPersisterUtil();
         AircraftId expectedId = new AircraftId(987L);
 
         var usecase = new BuyAircraftUseCase(

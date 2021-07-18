@@ -4,7 +4,6 @@ import com.enterprise.airport.common.types.base.AggregateRoot;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.common.Airport;
 import com.enterprise.airport.common.types.exception.DomainException;
-import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftIsOccupiedByAnotherFlight;
 import com.enterprise.airport.flightmanagement.domain.airoport.AirportAllowDepartureTime;
@@ -41,9 +40,9 @@ public class Flight extends AggregateRoot<FlightId> {
             Airport departureAirport,
             Airport arrivalAirport,
             LocalDateTime departureTime,
-            Aircraft aircraft
+            AircraftId aircraftId
     ) {
-        if (aircraftIsOccupied.check(aircraft.getId())) {
+        if (aircraftIsOccupied.check(aircraftId)) {
             throw new AircraftIsOccupiedByAnotherFlightException();
         }
 
@@ -57,7 +56,7 @@ public class Flight extends AggregateRoot<FlightId> {
                 departureAirport,
                 arrivalAirport,
                 departureTime,
-                aircraft.getId()
+                aircraftId
         );
 
         flight.addEvent(new FlightEvent.FlightAnnounced(flight.getId()));
