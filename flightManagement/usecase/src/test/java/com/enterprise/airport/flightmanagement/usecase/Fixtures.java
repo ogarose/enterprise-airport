@@ -22,44 +22,58 @@ import com.enterprise.airport.flightmanagement.domain.ticket.Price;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketRestorer;
+import com.enterprise.airport.flightmanagement.usecase.order.CreateOrderRequest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Fixtures {
     private static final Random RANDOM = new Random();
 
     public static Aircraft newAircraft() {
         return AircraftRestorer.restore(
-                new AircraftId(987L),
-                Version.from(45L),
+                new AircraftId(RANDOM.nextLong()),
+                Version.from(RANDOM.nextLong()),
                 AircraftModel.BOEING_747,
-                48L
+                RANDOM.nextLong()
         );
     }
 
     public static Flight generateFlight() {
         return FlightRestorer.restore(
-                new FlightId(548L),
-                Version.from(47L),
+                new FlightId(RANDOM.nextLong()),
+                Version.from(RANDOM.nextLong()),
                 Airport.AC,
                 Airport.HM,
                 LocalDateTime.of(2021, 5, 7, 8, 7),
-                new AircraftId(987L)
+                new AircraftId(RANDOM.nextLong())
         );
     }
 
     public static Flight flightWithDepartureTime(LocalDateTime departureTime) {
         return FlightRestorer.restore(
-                new FlightId(548L),
+                new FlightId(RANDOM.nextLong()),
                 Version.from(47L),
                 Airport.AC,
                 Airport.HM,
                 departureTime,
-                new AircraftId(987L)
+                new AircraftId(RANDOM.nextLong())
+        );
+    }
+
+    public static Flight flightWithAircraftId(AircraftId aircraftId) {
+        return FlightRestorer.restore(
+                new FlightId(RANDOM.nextLong()),
+                Version.from(47L),
+                Airport.AC,
+                Airport.HM,
+                LocalDateTime.of(2021, 5, 7, 8, 7),
+                aircraftId
         );
     }
 
@@ -84,11 +98,11 @@ public class Fixtures {
 
     public static Order createdOrder() {
         return OrderRestorer.restore(
-                new OrderId(123L),
-                Version.from(654L),
+                new OrderId(RANDOM.nextLong()),
+                Version.from(RANDOM.nextLong()),
                 new ArrayList<>() {{
                     add(new OrderItem(
-                            new TicketId(854L),
+                            new TicketId(RANDOM.nextLong()),
                             new Passenger(
                                     new FullName("Antit", "Baititi"),
                                     new PassportNumber("AS8879645")
@@ -102,8 +116,8 @@ public class Fixtures {
 
     public static Order createdOrderWithTicketId(TicketId ticketId) {
         return OrderRestorer.restore(
-                new OrderId(123L),
-                Version.from(654L),
+                new OrderId(RANDOM.nextLong()),
+                Version.from(RANDOM.nextLong()),
                 new ArrayList<>() {{
                     add(new OrderItem(
                             ticketId,
@@ -119,9 +133,28 @@ public class Fixtures {
     }
 
     public static Passenger generatePassenger() {
+        var passengerDto = Fixtures.generatePassengerDto();
+
         return new Passenger(
-                new FullName("Abib" + RANDOM.nextInt(), "Abeba" + RANDOM.nextInt()),
-                new PassportNumber("KS" + (1_000_000 + RANDOM.nextInt(999_999)))
+                new FullName(passengerDto.getFirstName(), passengerDto.getLastName()),
+                new PassportNumber(passengerDto.getPassportNumber())
         );
+    }
+
+    public static CreateOrderRequest.PassengerDto generatePassengerDto() {
+        return new CreateOrderRequest.PassengerDto(
+                "Abib" + RANDOM.nextInt(),
+                "Abeba" + RANDOM.nextInt(),
+                null,
+                "KS" + (1_000_000 + RANDOM.nextInt(999_999))
+        );
+    }
+
+    public static Map<Long, CreateOrderRequest.PassengerDto> generateRawPassengersMap(List<Ticket> tickets) {
+        return tickets.stream()
+                .collect(Collectors.<Ticket, Long, CreateOrderRequest.PassengerDto>toMap(
+                        ticket -> ticket.getId().getValue(),
+                        ticket -> Fixtures.generatePassengerDto()
+                ));
     }
 }

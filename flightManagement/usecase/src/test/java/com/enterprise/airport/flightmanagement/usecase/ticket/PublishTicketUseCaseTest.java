@@ -1,12 +1,11 @@
 package com.enterprise.airport.flightmanagement.usecase.ticket;
 
 
-import com.enterprise.airport.flightmanagement.domain.ticket.Price;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 import com.enterprise.airport.flightmanagement.usecase.Fixtures;
+import com.enterprise.airport.flightmanagement.usecase.fake.FlightPersisterFake;
+import com.enterprise.airport.flightmanagement.usecase.fake.TicketPersisterFake;
 import com.enterprise.airport.flightmanagement.usecase.rules.FlightIsAnnouncedImpl;
-import com.enterprise.airport.flightmanagement.usecase.util.FlightPersisterUtil;
-import com.enterprise.airport.flightmanagement.usecase.util.TicketPersisterUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,15 +15,16 @@ import java.time.LocalDateTime;
 
 class PublishTicketUseCaseTest {
 
-    private FlightPersisterUtil flightExtractor;
+    public static final int PRICE_SCALE = 2;
+    private FlightPersisterFake flightExtractor;
     private FlightIsAnnouncedImpl flightIsAnnounceRule;
-    private TicketPersisterUtil ticketPersister;
+    private TicketPersisterFake ticketPersister;
 
     @BeforeEach
     void beforeTest() {
-        flightExtractor = new FlightPersisterUtil();
+        flightExtractor = new FlightPersisterFake();
         flightIsAnnounceRule = new FlightIsAnnouncedImpl();
-        ticketPersister = new TicketPersisterUtil();
+        ticketPersister = new TicketPersisterFake();
     }
 
     @Test
@@ -42,7 +42,7 @@ class PublishTicketUseCaseTest {
 
         var request = new PublishTicketRequest(
                 forFlight.getId().getValue(),
-                BigDecimal.ONE.setScale(Price.SCALE)
+                BigDecimal.ONE.setScale(PRICE_SCALE)
         );
 
         var publishedTicketId = usecase.execute(request);
@@ -63,7 +63,7 @@ class PublishTicketUseCaseTest {
 
             var request = new PublishTicketRequest(
                     6548L,
-                    BigDecimal.ONE.setScale(Price.SCALE)
+                    BigDecimal.ONE.setScale(PRICE_SCALE)
             );
 
             usecase.execute(request);

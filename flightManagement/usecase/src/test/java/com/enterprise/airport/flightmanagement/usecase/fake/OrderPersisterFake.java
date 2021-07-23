@@ -1,4 +1,4 @@
-package com.enterprise.airport.flightmanagement.usecase.util;
+package com.enterprise.airport.flightmanagement.usecase.fake;
 
 import com.enterprise.airport.flightmanagement.domain.order.Order;
 import com.enterprise.airport.flightmanagement.domain.order.OrderId;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class OrderPersisterUtil implements OrderExtractor, OrderPersister {
+public class OrderPersisterFake implements OrderExtractor, OrderPersister {
     public Map<OrderId, Order> data = new HashMap<>();
 
     @Override

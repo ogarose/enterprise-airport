@@ -1,7 +1,7 @@
 package com.enterprise.airport.leasing.usecase.aircraft;
 
 import com.enterprise.airport.leasing.domain.aircraft.AircraftId;
-import com.enterprise.airport.leasing.usecase.util.AircraftPersisterUtil;
+import com.enterprise.airport.leasing.usecase.fake.AircraftPersisterFake;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 class BuyAircraftUseCaseTest {
 
-    private final AircraftPersisterUtil persister = new AircraftPersisterUtil();
+    private final AircraftPersisterFake persister = new AircraftPersisterFake();
 
     @Test
     void buyAircraft() {

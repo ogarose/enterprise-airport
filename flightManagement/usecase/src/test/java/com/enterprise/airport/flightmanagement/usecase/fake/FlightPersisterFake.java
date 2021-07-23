@@ -1,4 +1,4 @@
-package com.enterprise.airport.flightmanagement.usecase.util;
+package com.enterprise.airport.flightmanagement.usecase.fake;
 
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.flight.Flight;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class FlightPersisterUtil implements FlightPersister, FlightExtractor {
+public class FlightPersisterFake implements FlightPersister, FlightExtractor {
     public Map<FlightId, Flight> data = new HashMap<>();
 
     @Override

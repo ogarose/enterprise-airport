@@ -18,7 +18,7 @@ class FlightTest {
                         Airport.AC,
                         Airport.G9,
                         LocalDateTime.of(2021, 3, 10, 10, 55),
-                        Fixtures.newAircraft().getId()
+                        Fixtures.newAircraft()
                 )
         );
     }
@@ -33,7 +33,7 @@ class FlightTest {
                         Airport.AC,
                         Airport.G9,
                         LocalDateTime.of(2021, 3, 10, 10, 55),
-                        Fixtures.newAircraft().getId()
+                        Fixtures.newAircraft()
                 )
         );
     }
@@ -47,7 +47,7 @@ class FlightTest {
                 Airport.AC,
                 Airport.G9,
                 LocalDateTime.of(2021, 3, 10, 10, 55),
-                Fixtures.newAircraft().getId()
+                Fixtures.newAircraft()
         );
 
         var eventList = announcedFlight.popEvents();

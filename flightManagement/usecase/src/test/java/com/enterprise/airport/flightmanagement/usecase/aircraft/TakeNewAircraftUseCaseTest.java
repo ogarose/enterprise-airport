@@ -1,12 +1,12 @@
 package com.enterprise.airport.flightmanagement.usecase.aircraft;
 
-import com.enterprise.airport.flightmanagement.usecase.util.AircraftPersisterUtil;
+import com.enterprise.airport.flightmanagement.usecase.fake.AircraftPersisterFake;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TakeNewAircraftUseCaseTest {
 
-    private final AircraftPersisterUtil aircraftPersister = new AircraftPersisterUtil();
+    private final AircraftPersisterFake aircraftPersister = new AircraftPersisterFake();
 
     @Test
     void takeNewAircraft() {
@@ -21,5 +21,6 @@ class TakeNewAircraftUseCaseTest {
         var aircraftId = usecase.execute(request);
 
         Assertions.assertEquals(request.getId(), aircraftId);
+        Assertions.assertNotNull(aircraftPersister.data.get(request.getId()));
     }
 }

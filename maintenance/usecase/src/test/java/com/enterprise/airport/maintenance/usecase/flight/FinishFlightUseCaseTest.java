@@ -4,29 +4,38 @@ import com.enterprise.airport.common.types.common.Airport;
 import com.enterprise.airport.maintenance.domain.flight.Flight;
 import com.enterprise.airport.maintenance.domain.flight.FlightStatus;
 import com.enterprise.airport.maintenance.usecase.Fixtures;
-import com.enterprise.airport.maintenance.usecase.util.FlightPersisterUtil;
+import com.enterprise.airport.maintenance.usecase.fake.FlightPersisterFake;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class FinishFlightUseCaseTest {
 
-    private FlightPersisterUtil flightPersisterUtil;
+    private FlightPersisterFake flightPersisterFake;
 
     @BeforeEach
     void beforeEach() {
-        flightPersisterUtil = new FlightPersisterUtil();
+        flightPersisterFake = new FlightPersisterFake();
     }
 
     @Test
     void finishFlight() {
+        var flightPersisterSpy = new FlightPersister() {
+            public Flight savedFlight;
+
+            @Override
+            public void save(Flight flight) {
+                savedFlight = flight;
+            }
+        };
+
         var usecase = new FinishFlightUseCase(
-                flightPersisterUtil,
-                flightPersisterUtil
+                flightPersisterFake,
+                flightPersisterSpy
         );
 
         Flight flight = Fixtures.generateRegisteredFlight();
-        flightPersisterUtil.save(flight);
+        flightPersisterFake.save(flight);
 
         var request = new FinishFlightRequest(
                 flight.getId().getValue(),
@@ -36,16 +45,19 @@ class FinishFlightUseCaseTest {
 
         usecase.execute(request);
 
-        Assertions.assertEquals(FlightStatus.FINISHED, flight.getStatus());
-        Assertions.assertEquals(request.getArrivedAirport(), flight.getArrivedAirport());
-        Assertions.assertEquals(request.getFlightHours(), flight.getFlightHours());
+        Flight savedFlight = flightPersisterSpy.savedFlight;
+
+        Assertions.assertNotNull(savedFlight);
+        Assertions.assertEquals(FlightStatus.FINISHED, savedFlight.getStatus());
+        Assertions.assertEquals(request.getArrivedAirport(), savedFlight.getArrivedAirport());
+        Assertions.assertEquals(request.getFlightHours(), savedFlight.getFlightHours());
     }
 
     @Test
     void throwsExceptionForNotExistedFlight() {
         var usecase = new FinishFlightUseCase(
-                flightPersisterUtil,
-                flightPersisterUtil
+                flightPersisterFake,
+                flightPersisterFake
         );
 
 

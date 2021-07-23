@@ -1,20 +1,20 @@
 package com.enterprise.airport.flightmanagement.usecase.rules;
 
 import com.enterprise.airport.flightmanagement.usecase.Fixtures;
-import com.enterprise.airport.flightmanagement.usecase.util.OrderPersisterUtil;
+import com.enterprise.airport.flightmanagement.usecase.fake.OrderPersisterFake;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TicketAvailableImplTest {
 
-    private OrderPersisterUtil orderPersisterUtil;
+    private OrderPersisterFake orderPersisterFake;
     private TicketAvailableImpl ticketAvailableRule;
 
     @BeforeEach
     void beforeEachTest() {
-        orderPersisterUtil = new OrderPersisterUtil();
-        ticketAvailableRule = new TicketAvailableImpl(orderPersisterUtil);
+        orderPersisterFake = new OrderPersisterFake();
+        ticketAvailableRule = new TicketAvailableImpl(orderPersisterFake);
     }
 
     @Test
@@ -22,7 +22,7 @@ class TicketAvailableImplTest {
         var requestedTicket = Fixtures.generateListTicket(1).get(0);
 
         var order = Fixtures.createdOrderWithTicketId(requestedTicket.getId());
-        orderPersisterUtil.save(order);
+        orderPersisterFake.save(order);
 
         Assertions.assertFalse(ticketAvailableRule.check(requestedTicket));
     }
