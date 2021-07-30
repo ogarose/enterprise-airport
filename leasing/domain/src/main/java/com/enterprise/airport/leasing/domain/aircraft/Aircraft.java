@@ -12,7 +12,7 @@ public class Aircraft extends AggregateRoot<AircraftId> {
     private AircraftModel model;
     private AircraftLoadCapacity aircraftLoadCapacity;
     private LocalDate issueDate;
-    private AircraftRegistration licenseNumber;
+    private AircraftRegistration registration;
     private AircraftSeats seats;
     private AircraftContractNumber contractNumber;
 
@@ -22,7 +22,7 @@ public class Aircraft extends AggregateRoot<AircraftId> {
             AircraftModel model,
             AircraftLoadCapacity aircraftLoadCapacity,
             LocalDate issueDate,
-            AircraftRegistration licenseNumber,
+            AircraftRegistration registration,
             AircraftSeats seats,
             AircraftContractNumber contractNumber
     ) {
@@ -30,7 +30,7 @@ public class Aircraft extends AggregateRoot<AircraftId> {
         this.model = model;
         this.aircraftLoadCapacity = aircraftLoadCapacity;
         this.issueDate = issueDate;
-        this.licenseNumber = licenseNumber;
+        this.registration = registration;
         this.seats = seats;
         this.contractNumber = contractNumber;
     }
@@ -40,7 +40,7 @@ public class Aircraft extends AggregateRoot<AircraftId> {
             AircraftModel model,
             AircraftLoadCapacity aircraftLoadCapacity,
             LocalDate issueDate,
-            AircraftRegistration licenseNumber,
+            AircraftRegistration registration,
             AircraftSeats seats,
             AircraftContractNumber contractNumber
     ) {
@@ -50,7 +50,7 @@ public class Aircraft extends AggregateRoot<AircraftId> {
                 model,
                 aircraftLoadCapacity,
                 issueDate,
-                licenseNumber,
+                registration,
                 seats,
                 contractNumber
         );

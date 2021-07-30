@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.ticket;
 
 @FunctionalInterface
-public interface IsTicketAvailable {
+public interface TicketAvailable {
     boolean check(Ticket ticket);
 }

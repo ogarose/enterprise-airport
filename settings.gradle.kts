@@ -14,9 +14,14 @@ include("common:types")
 
 include("leasing")
 include("leasing:domain")
+include("leasing:usecase")
 
 include("flightManagement")
 include("flightManagement:domain")
+include("flightManagement:usecase")
 
 include("maintenance")
 include("maintenance:domain")
+include("maintenance:usecase")
+
+include("integration")

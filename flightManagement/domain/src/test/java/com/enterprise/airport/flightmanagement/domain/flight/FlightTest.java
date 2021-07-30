@@ -10,32 +10,32 @@ import java.time.LocalDateTime;
 class FlightTest {
     @Test
     void canNotAnnounceFlightForOccupiedAircraft() {
-        Assertions.assertThrows(Flight.AircraftIsOccupiedByAnotherFlightException.class, () -> {
-            Flight.announceFlight(
-                    (aircraftId) -> true,
-                    (airport, departureTime) -> true,
-                    () -> new FlightId(25L),
-                    Airport.AC,
-                    Airport.G9,
-                    LocalDateTime.of(2021, 3, 10, 10, 55),
-                    Fixtures.newAircraft()
-            );
-        });
+        Assertions.assertThrows(Flight.AircraftIsOccupiedByAnotherFlightException.class, () ->
+                Flight.announceFlight(
+                        (aircraftId) -> true,
+                        (airport, departureTime) -> true,
+                        () -> new FlightId(25L),
+                        Airport.AC,
+                        Airport.G9,
+                        LocalDateTime.of(2021, 3, 10, 10, 55),
+                        Fixtures.newAircraft()
+                )
+        );
     }
 
     @Test
     void canNotAnnounceFlightForNorAllowedDepartureTime() {
-        Assertions.assertThrows(Flight.DepartureTimeIsNotAllowedException.class, () -> {
-            Flight.announceFlight(
-                    (aircraftId) -> false,
-                    (airport, departureTime) -> false,
-                    () -> new FlightId(25L),
-                    Airport.AC,
-                    Airport.G9,
-                    LocalDateTime.of(2021, 3, 10, 10, 55),
-                    Fixtures.newAircraft()
-            );
-        });
+        Assertions.assertThrows(Flight.DepartureTimeIsNotAllowedException.class, () ->
+                Flight.announceFlight(
+                        (aircraftId) -> false,
+                        (airport, departureTime) -> false,
+                        () -> new FlightId(25L),
+                        Airport.AC,
+                        Airport.G9,
+                        LocalDateTime.of(2021, 3, 10, 10, 55),
+                        Fixtures.newAircraft()
+                )
+        );
     }
 
     @Test
