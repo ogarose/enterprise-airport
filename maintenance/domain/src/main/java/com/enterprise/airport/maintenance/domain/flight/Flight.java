@@ -3,7 +3,7 @@ package com.enterprise.airport.maintenance.domain.flight;
 import com.enterprise.airport.common.types.base.AggregateRoot;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.common.Airport;
-import com.enterprise.airport.common.types.exception.DomainException;
+import io.vavr.control.Either;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -25,16 +25,16 @@ public class Flight extends AggregateRoot<FlightId> {
         super(id, first);
         this.departureAirport = departureAirport;
         this.arrivedAirport = arrivedAirport;
-        this.flightHours = flightHours == null ? new FlightHours(0L) : flightHours;
+        this.flightHours = flightHours == null ? FlightHours.zero() : flightHours;
         this.status = status == null ? FlightStatus.REGISTER : status;
     }
 
-    public void finish(
+    public Either<FlightError, Void> finish(
             @NonNull Airport arrivedAirport,
             @NonNull FlightHours flightHours
     ) {
         if (!status.canBeChangeTo(FlightStatus.FINISHED)) {
-            throw new CanNotBeFinishedException();
+            return Either.left(new FlightError.CanNotBeFinished());
         }
 
         this.arrivedAirport = arrivedAirport;
@@ -42,6 +42,8 @@ public class Flight extends AggregateRoot<FlightId> {
         this.status = FlightStatus.FINISHED;
 
         this.addEvent(new FlightEvent.FlightArrived(this.getId()));
+
+        return Either.right(null);
     }
 
     public static Flight register(
@@ -53,7 +55,7 @@ public class Flight extends AggregateRoot<FlightId> {
                 Version.first(),
                 departureAirport,
                 null,
-                new FlightHours(0L),
+                FlightHours.zero(),
                 FlightStatus.REGISTER
         );
 
@@ -61,6 +63,4 @@ public class Flight extends AggregateRoot<FlightId> {
 
         return registeredFlight;
     }
-
-    public static class CanNotBeFinishedException extends DomainException{}
 }

@@ -48,7 +48,15 @@ Steps of the deployment:
 - Build image and push to ECR mainapp  (scripts buildImage.sh and then pushImages.sh)
 - AWS ECS runs deployment for the cluster airport. 
 
-### Helpers 
+## Code design
+### Error Handing / Raising
+Modules **leasing** and **flightManagement** based on Domain Exceptions.
+
+Module maintenance based on Vavr Either BusinessError or UseCaseError.
+
+__It was made to compare 2 approached of error handling.__
+
+## Helpers 
 
 #### Show the list of the update candidate dependencies
 The task: dependencyUpdates

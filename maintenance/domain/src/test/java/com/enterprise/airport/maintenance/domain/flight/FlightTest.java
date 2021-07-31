@@ -33,17 +33,17 @@ class FlightTest {
                 Version.from(654L),
                 Airport.A3,
                 null,
-                new FlightHours(0L),
+                FlightHours.zero(),
                 FlightStatus.REGISTER
         );
 
         registeredFlight.finish(
                 Airport.NZ,
-                new FlightHours(7L)
+                FlightHours.from(7L).getOrNull()
         );
 
         Assertions.assertEquals(Airport.NZ, registeredFlight.getArrivedAirport());
-        Assertions.assertEquals(new FlightHours(7L), registeredFlight.getFlightHours());
+        Assertions.assertEquals(FlightHours.from(7L).getOrNull(), registeredFlight.getFlightHours());
 
         var events = registeredFlight.popEvents();
         Assertions.assertEquals(1, events.size());

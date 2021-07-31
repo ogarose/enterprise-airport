@@ -22,10 +22,13 @@ dependencies {
     implementation("org.projectlombok:lombok:1.18.20")
     annotationProcessor("org.projectlombok:lombok:1.18.20")
 
+    implementation("io.vavr:vavr:0.10.4")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.mockito:mockito-inline:3.11.2")
     testImplementation("org.mockito:mockito-junit-jupiter:3.11.2")
+    testImplementation("org.hamcrest:hamcrest:2.2")
 }
 
 tasks.test {
