@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.ticket;
 
-import com.enterprise.airport.flightmanagement.domain.ticket.Price;
+import com.enterprise.airport.common.types.common.Price;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

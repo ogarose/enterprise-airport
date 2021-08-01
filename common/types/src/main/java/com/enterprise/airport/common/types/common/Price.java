@@ -1,4 +1,4 @@
-package com.enterprise.airport.flightmanagement.domain.ticket;
+package com.enterprise.airport.common.types.common;
 
 import com.enterprise.airport.common.types.exception.DomainException;
 import lombok.AccessLevel;

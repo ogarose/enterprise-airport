@@ -3,6 +3,7 @@ package com.enterprise.airport.flightmanagement.usecase;
 import com.enterprise.airport.common.types.base.Version;
 import com.enterprise.airport.common.types.common.AircraftModel;
 import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.common.Price;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftRestorer;
@@ -18,7 +19,6 @@ import com.enterprise.airport.flightmanagement.domain.order.OrderRestorer;
 import com.enterprise.airport.flightmanagement.domain.order.OrderStatus;
 import com.enterprise.airport.flightmanagement.domain.order.Passenger;
 import com.enterprise.airport.flightmanagement.domain.order.PassportNumber;
-import com.enterprise.airport.flightmanagement.domain.ticket.Price;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketRestorer;
@@ -110,7 +110,8 @@ public class Fixtures {
                     ));
                 }},
                 new Email("qwer@tutut.ba"),
-                OrderStatus.CREATED
+                OrderStatus.CREATED,
+                Price.from(BigDecimal.valueOf(randomPositiveLong()).setScale(2))
         );
     }
 
@@ -128,7 +129,8 @@ public class Fixtures {
                     ));
                 }},
                 new Email("qwer@tutut.ba"),
-                OrderStatus.CREATED
+                OrderStatus.CREATED,
+                Price.from(BigDecimal.valueOf(randomPositiveLong()).setScale(2))
         );
     }
 
@@ -156,5 +158,9 @@ public class Fixtures {
                         ticket -> ticket.getId().getValue(),
                         ticket -> Fixtures.generatePassengerDto()
                 ));
+    }
+
+    private static long randomPositiveLong() {
+        return Math.abs(RANDOM.nextLong());
     }
 }
