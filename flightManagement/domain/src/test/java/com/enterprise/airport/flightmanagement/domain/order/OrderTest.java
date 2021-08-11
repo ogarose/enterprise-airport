@@ -1,9 +1,11 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
+import com.enterprise.airport.common.types.common.Price;
 import com.enterprise.airport.flightmanagement.domain.Fixtures;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 class OrderTest {
@@ -56,6 +58,15 @@ class OrderTest {
                         orderItem -> orderItem.getBookedTicketId().equals(tickets.get(2).getId())
                                 && orderItem.getPassenger().equals(passenger3)
                 )
+        );
+        //AND order has a Price == sum(all ticket prices)
+        Assertions.assertEquals(
+                tickets.stream()
+                        .map(ticket -> ticket.getPrice().getValue())
+                        .reduce(BigDecimal::add)
+                        .map(Price::from)
+                        .get(),
+                order.getPrice()
         );
     }
 
