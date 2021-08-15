@@ -2,13 +2,30 @@
 ![Build check](https://github.com/ogarose/enterprise-airport/actions/workflows/gradle_build.yml/badge.svg)
 
 
-## Airport Enterprise Application
+## Airline Enterprise Application
 **Created during the course "Development Enterprise Applications"**
 
 ---
-It is multimodule project. 
+## Business introduction
+###Event Storming
+![](./airline_company_modules.jpg)
 
-- mainapp - the main service of the application.
+## Modules descriptions
+It is multimodule project.
+
+- Business modules
+  - flightManagement - manage flight and tickets.
+  - leasing - buy new Aircraft.
+  - maintenance - support and maintenance of aircraft.
+- integration - Integration with external services/APIs.
+- common - module with common packages for other modules.
+- mainapp - It was saved as an example of the app deployment.
+
+## Project architecture
+The project uses "DDD" approach and based on "Screaming" "Clean Architecture". 
+Each module is a separated Bounded context having been split by "Clean Architecture" layers: Domain, Use Case.
+
+_Layers "Interface Adapters" and "Frameworks and drivers" haven't been implement or not fully implemented yet._  
 
 ## Project workflow
 
@@ -71,16 +88,4 @@ The tasks: checkstyleMain and checkstyleTest
 The tasks: pmdMain and pdmTest
 
 #### Check OWASP
-The task: dependencyCheckAnalyze
-
-## TODO 
-- сделать оптимистическую блокировку при сохранении агрегатов. И описать это в readme.md
-- использовать vavr либу вместо domain exception
-
-
-## Вопросы
-- Не могу понять зачем создавать интерфейсы для useCase. Причем там же где они и инмплиментируются.
- Пример com.enterprise.airport.leasing.usecase.aircraft.BuyAircraft
-- Почему интерфейс UseCase идет без постфикса UseCase. А имплементация с посфиксом. Логичнее либо отказаться от интерфейсов,
-либо интерфейс с UseCase постфиксом, а имплементация с Impl постфиксом.   
-- Почему в проекте-примере getter UsecCas-ы типа  GetOrders не возвращают доменный объект, в новую его презентацию (типа DTO)? 
+The task: dependencyCheckAnalyze 
