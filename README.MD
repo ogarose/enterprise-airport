@@ -10,7 +10,7 @@
 ### Event Storming map
 ![](./airline_company_modules.jpg)
 
-## Modules descriptions
+## Module descriptions
 It is multimodule project.
 
 - Business modules
