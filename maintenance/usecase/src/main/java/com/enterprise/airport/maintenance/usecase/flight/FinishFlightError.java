@@ -1,6 +1,6 @@
 package com.enterprise.airport.maintenance.usecase.flight;
 
-import com.enterprise.airport.common.types.error.UseCaseError;
+import com.enterprise.airport.common.types.usecase.error.UseCaseError;
 import com.enterprise.airport.maintenance.domain.flight.FlightId;
 
 public class FinishFlightError extends UseCaseError {

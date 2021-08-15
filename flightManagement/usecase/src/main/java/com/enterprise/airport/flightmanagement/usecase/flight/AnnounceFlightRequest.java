@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.flight;
 
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.enterprise.airport.leasing.usecase.aircraft;
 
-import com.enterprise.airport.common.types.common.AircraftModel;
+import com.enterprise.airport.common.types.domain.common.AircraftModel;
 import com.enterprise.airport.leasing.domain.aircraft.AircraftContractNumber;
 import com.enterprise.airport.leasing.domain.aircraft.AircraftLoadCapacity;
 import com.enterprise.airport.leasing.domain.aircraft.AircraftRegistration;

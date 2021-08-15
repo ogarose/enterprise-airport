@@ -1,8 +1,8 @@
 package com.enterprise.airport.flightmanagement.domain.ticket;
 
-import com.enterprise.airport.common.types.base.AggregateRoot;
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.base.AggregateRoot;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.flight.Flight;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightId;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightIsAnnounced;

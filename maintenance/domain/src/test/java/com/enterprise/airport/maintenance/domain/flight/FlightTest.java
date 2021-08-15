@@ -1,7 +1,7 @@
 package com.enterprise.airport.maintenance.domain.flight;
 
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

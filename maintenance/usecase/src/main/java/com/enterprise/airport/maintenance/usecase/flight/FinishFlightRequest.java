@@ -1,6 +1,6 @@
 package com.enterprise.airport.maintenance.usecase.flight;
 
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.maintenance.domain.flight.FlightHours;
 import com.enterprise.airport.maintenance.domain.flight.FlightId;
 import io.vavr.collection.Seq;

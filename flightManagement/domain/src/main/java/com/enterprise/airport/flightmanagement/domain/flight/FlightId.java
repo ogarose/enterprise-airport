@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.flight;
 
-import com.enterprise.airport.common.types.base.ValueObject;
+import com.enterprise.airport.common.types.domain.base.ValueObject;
 import lombok.Value;
 
 @Value

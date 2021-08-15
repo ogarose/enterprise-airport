@@ -1,9 +1,9 @@
 package com.enterprise.airport.flightmanagement.domain.flight;
 
-import com.enterprise.airport.common.types.base.AggregateRoot;
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.Airport;
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.base.AggregateRoot;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.Airport;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftIsOccupiedByAnotherFlight;

@@ -2,9 +2,8 @@ plugins {
     id("airport.java-common-conventions")
 }
 
-group = "com.enterprise.airport.flightmanagement.usecase"
-
 dependencies {
-    implementation(project(":common:types"))
+    implementation(project(":common:types:domain"))
+    implementation(project(":common:types:usecase"))
     implementation(project(":flightManagement:domain"))
 }

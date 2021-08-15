@@ -12,7 +12,7 @@ dependencies {
 
     // project dependencies
     implementation(project(":flightManagement:domain"))
-    implementation(project(":common:types"))
+    implementation(project(":common:types:domain"))
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")

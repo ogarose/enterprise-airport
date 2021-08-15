@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.ticket;
 
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Value;

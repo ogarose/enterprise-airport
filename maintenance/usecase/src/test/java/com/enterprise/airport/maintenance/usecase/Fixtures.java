@@ -1,6 +1,6 @@
 package com.enterprise.airport.maintenance.usecase;
 
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.maintenance.domain.flight.Flight;
 import com.enterprise.airport.maintenance.domain.flight.FlightId;
 

@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.flight;
 
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.flightmanagement.domain.Fixtures;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

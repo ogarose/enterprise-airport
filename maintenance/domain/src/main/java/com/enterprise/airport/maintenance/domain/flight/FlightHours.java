@@ -1,7 +1,7 @@
 package com.enterprise.airport.maintenance.domain.flight;
 
-import com.enterprise.airport.common.types.base.ValueObject;
-import com.enterprise.airport.common.types.error.BusinessError;
+import com.enterprise.airport.common.types.domain.base.ValueObject;
+import com.enterprise.airport.common.types.domain.error.BusinessError;
 import io.vavr.control.Either;
 import lombok.Value;
 

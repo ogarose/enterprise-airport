@@ -1,7 +1,7 @@
 package com.enterprise.airport.maintenance.usecase.flight;
 
 
-import com.enterprise.airport.common.types.error.GeneralUseCaseError;
+import com.enterprise.airport.common.types.usecase.error.GeneralUseCaseError;
 import com.enterprise.airport.maintenance.domain.flight.FlightError;
 import io.vavr.API;
 import io.vavr.control.Either;

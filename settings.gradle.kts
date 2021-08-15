@@ -11,6 +11,8 @@ rootProject.name = "airport"
 
 include("mainapp")
 include("common:types")
+include("common:types:usecase")
+include("common:types:domain")
 
 include("leasing")
 include("leasing:domain")

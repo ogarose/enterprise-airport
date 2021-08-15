@@ -1,8 +1,8 @@
 package com.enterprise.airport.flightmanagement.usecase;
 
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.AircraftModel;
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.AircraftModel;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftRestorer;

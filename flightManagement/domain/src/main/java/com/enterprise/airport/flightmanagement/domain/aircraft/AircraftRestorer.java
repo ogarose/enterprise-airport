@@ -1,7 +1,7 @@
 package com.enterprise.airport.flightmanagement.domain.aircraft;
 
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.AircraftModel;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.AircraftModel;
 
 public final class AircraftRestorer {
     private AircraftRestorer() {

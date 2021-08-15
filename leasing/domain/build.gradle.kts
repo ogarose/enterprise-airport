@@ -5,5 +5,5 @@ plugins {
 group = "com.enterprise.airport.leasing.domain"
 
 dependencies {
-    implementation(project(":common:types"))
+    implementation(project(":common:types:domain"))
 }

@@ -1,6 +1,6 @@
 package com.enterprise.airport.maintenance.domain.flight;
 
-import com.enterprise.airport.common.types.error.BusinessError;
+import com.enterprise.airport.common.types.domain.error.BusinessError;
 
 public class FlightError extends BusinessError {
 

@@ -1,8 +1,8 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
-import com.enterprise.airport.common.types.base.AggregateRoot;
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.base.AggregateRoot;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketAvailable;
 import lombok.Getter;
