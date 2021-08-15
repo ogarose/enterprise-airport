@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
-import com.enterprise.airport.common.types.common.Price;
+import com.enterprise.airport.common.types.domain.common.Price;
 import com.enterprise.airport.flightmanagement.domain.Fixtures;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

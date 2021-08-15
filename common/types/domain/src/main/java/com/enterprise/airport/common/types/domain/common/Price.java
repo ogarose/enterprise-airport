@@ -1,4 +1,4 @@
-package com.enterprise.airport.common.types.common;
+package com.enterprise.airport.common.types.domain.common;
 
 import com.enterprise.airport.common.types.domain.exception.DomainException;
 import lombok.AccessLevel;
