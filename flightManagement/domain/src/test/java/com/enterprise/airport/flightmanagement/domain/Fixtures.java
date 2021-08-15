@@ -3,6 +3,7 @@ package com.enterprise.airport.flightmanagement.domain;
 import com.enterprise.airport.common.types.domain.base.Version;
 import com.enterprise.airport.common.types.domain.common.AircraftModel;
 import com.enterprise.airport.common.types.domain.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Price;
 import com.enterprise.airport.flightmanagement.domain.aircraft.Aircraft;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftRestorer;
@@ -18,7 +19,6 @@ import com.enterprise.airport.flightmanagement.domain.order.OrderRestorer;
 import com.enterprise.airport.flightmanagement.domain.order.OrderStatus;
 import com.enterprise.airport.flightmanagement.domain.order.Passenger;
 import com.enterprise.airport.flightmanagement.domain.order.PassportNumber;
-import com.enterprise.airport.flightmanagement.domain.ticket.Price;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketId;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketRestorer;
@@ -85,8 +85,13 @@ public class Fixtures {
                     ));
                 }},
                 new Email("qwer@tutut.ba"),
-                OrderStatus.CREATED
+                OrderStatus.CREATED,
+                Price.from(BigDecimal.valueOf(randomPositiveLong()).setScale(2))
         );
+    }
+
+    private static long randomPositiveLong() {
+        return Math.abs(RANDOM.nextLong());
     }
 
     public static Passenger generatePassenger() {

@@ -2,11 +2,13 @@ package com.enterprise.airport.flightmanagement.domain.order;
 
 import com.enterprise.airport.common.types.domain.base.AggregateRoot;
 import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.Price;
 import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;
 import com.enterprise.airport.flightmanagement.domain.ticket.TicketAvailable;
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,18 +18,21 @@ public class Order extends AggregateRoot<OrderId> {
     private List<OrderItem> orderItems;
     private Email customerEmail;
     private OrderStatus status;
+    private Price price;
 
     public Order(
             OrderId id,
             Version first,
             List<OrderItem> orderItems,
             Email customerEmail,
-            OrderStatus status
+            OrderStatus status,
+            Price price
     ) {
         super(id, first);
         this.orderItems = orderItems;
         this.customerEmail = customerEmail;
         this.status = status;
+        this.price = price;
     }
 
     public void pay() {
@@ -65,12 +70,21 @@ public class Order extends AggregateRoot<OrderId> {
                         .collect(Collectors.toList()
                 ),
                 customerEmail,
-                OrderStatus.CREATED
+                OrderStatus.CREATED,
+                calcTotalPrice(passengers)
         );
 
         createdOrder.addEvent(new OrderEvent.OrderCreated(createdOrder.getId()));
 
         return createdOrder;
+    }
+
+    private static Price calcTotalPrice(Map<Ticket, Passenger> passengers) {
+        return passengers.keySet().stream()
+                .map(ticket -> ticket.getPrice().getValue())
+                .reduce(BigDecimal::add)
+                .map(Price::from)
+                .orElseThrow();
     }
 
     public static class TicketIsNotAvailableException extends DomainException {
