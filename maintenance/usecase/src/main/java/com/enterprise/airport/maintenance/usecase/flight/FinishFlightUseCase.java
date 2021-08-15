@@ -1,9 +1,15 @@
 package com.enterprise.airport.maintenance.usecase.flight;
 
 
-import com.enterprise.airport.common.types.exception.DomainException;
-import com.enterprise.airport.maintenance.domain.flight.FlightId;
+import com.enterprise.airport.common.types.usecase.error.GeneralUseCaseError;
+import com.enterprise.airport.maintenance.domain.flight.FlightError;
+import io.vavr.API;
+import io.vavr.control.Either;
 import lombok.AllArgsConstructor;
+
+import static io.vavr.API.$;
+import static io.vavr.API.Case;
+import static io.vavr.Predicates.instanceOf;
 
 @AllArgsConstructor
 public class FinishFlightUseCase implements FinishFlight {
@@ -13,22 +19,30 @@ public class FinishFlightUseCase implements FinishFlight {
 
 
     @Override
-    public void execute(FinishFlightRequest request) {
-        var flight = flightExtractor.getById(request.getFlightId())
-                .orElseThrow(() -> IllegalFlightIdException.ofFlightId(request.getFlightId()));
+    public Either<? super FinishFlightError, Void> execute(FinishFlightRequest request) {
+        var flightOption = flightExtractor.getById(request.getFlightId());
 
-        flight.finish(request.getArrivedAirport(), request.getFlightHours());
-
-        flightPersister.save(flight);
-    }
-
-    public static class IllegalFlightIdException extends DomainException {
-        public IllegalFlightIdException(String message) {
-            super(message);
+        if (flightOption.isEmpty()) {
+            return Either.left(FinishFlightError.IllegalFlightId.ofFlightId(request.getFlightId()));
         }
 
-        public static IllegalFlightIdException ofFlightId(FlightId flightId) {
-            return new IllegalFlightIdException(String.format("Wrong flight id: %s", flightId.getValue()));
-        }
+        var flight = flightOption.get();
+
+        return flight.finish(request.getArrivedAirport(), request.getFlightHours())
+                .mapLeft(error -> API.Match(error)
+                        .of(
+                                Case(
+                                        $(instanceOf(FlightError.CanNotBeFinished.class)),
+                                        businessError -> new FinishFlightError.CanNotBeFinished()
+                                ),
+                                Case($(), GeneralUseCaseError::new)
+                        )
+                )
+                .map(
+                        result -> {
+                            flightPersister.save(flight);
+                            return result;
+                        }
+                );
     }
 }

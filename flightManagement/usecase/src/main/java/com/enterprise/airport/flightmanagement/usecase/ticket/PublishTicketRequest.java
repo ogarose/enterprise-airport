@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.ticket;
 
-import com.enterprise.airport.common.types.common.Price;
+import com.enterprise.airport.common.types.domain.common.Price;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightId;
 import lombok.AllArgsConstructor;
 import lombok.Data;

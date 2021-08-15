@@ -1,7 +1,7 @@
 package com.enterprise.airport.leasing.domain.aircraft;
 
-import com.enterprise.airport.common.types.base.ValueObject;
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.base.ValueObject;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import lombok.Value;
 
 @Value

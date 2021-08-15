@@ -1,0 +1,1 @@
+this module does not connect with main app. It was left as example of how to deploy application to AWS.

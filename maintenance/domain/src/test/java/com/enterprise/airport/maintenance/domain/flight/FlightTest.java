@@ -1,7 +1,7 @@
 package com.enterprise.airport.maintenance.domain.flight;
 
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,17 +33,17 @@ class FlightTest {
                 Version.from(654L),
                 Airport.A3,
                 null,
-                new FlightHours(0L),
+                FlightHours.zero(),
                 FlightStatus.REGISTER
         );
 
         registeredFlight.finish(
                 Airport.NZ,
-                new FlightHours(7L)
+                FlightHours.from(7L).getOrNull()
         );
 
         Assertions.assertEquals(Airport.NZ, registeredFlight.getArrivedAirport());
-        Assertions.assertEquals(new FlightHours(7L), registeredFlight.getFlightHours());
+        Assertions.assertEquals(FlightHours.from(7L).getOrNull(), registeredFlight.getFlightHours());
 
         var events = registeredFlight.popEvents();
         Assertions.assertEquals(1, events.size());

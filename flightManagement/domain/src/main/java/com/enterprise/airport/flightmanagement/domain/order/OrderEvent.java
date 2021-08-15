@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
-import com.enterprise.airport.common.types.base.DomainEvent;
+import com.enterprise.airport.common.types.domain.base.DomainEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 

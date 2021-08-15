@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.order;
 
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.order.OrderId;
 import lombok.AllArgsConstructor;
 

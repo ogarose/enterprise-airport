@@ -1,7 +1,7 @@
 package com.enterprise.airport.flightmanagement.domain.order;
 
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.Price;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.Price;
 
 import java.util.List;
 

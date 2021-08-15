@@ -1,8 +1,8 @@
 package com.enterprise.airport.leasing.domain.aircraft;
 
-import com.enterprise.airport.common.types.base.AggregateRoot;
-import com.enterprise.airport.common.types.base.Version;
-import com.enterprise.airport.common.types.common.AircraftModel;
+import com.enterprise.airport.common.types.domain.base.AggregateRoot;
+import com.enterprise.airport.common.types.domain.base.Version;
+import com.enterprise.airport.common.types.domain.common.AircraftModel;
 import lombok.Getter;
 
 import java.time.LocalDate;

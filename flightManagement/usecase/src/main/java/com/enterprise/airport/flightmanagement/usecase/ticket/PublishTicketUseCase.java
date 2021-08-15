@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.ticket;
 
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightId;
 import com.enterprise.airport.flightmanagement.domain.flight.FlightIsAnnounced;
 import com.enterprise.airport.flightmanagement.domain.ticket.Ticket;

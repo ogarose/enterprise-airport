@@ -1,6 +1,6 @@
 package com.enterprise.airport.flightmanagement.usecase.flight;
 
-import com.enterprise.airport.common.types.exception.DomainException;
+import com.enterprise.airport.common.types.domain.exception.DomainException;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftId;
 import com.enterprise.airport.flightmanagement.domain.aircraft.AircraftIsOccupiedByAnotherFlight;
 import com.enterprise.airport.flightmanagement.domain.airoport.AirportAllowDepartureTime;

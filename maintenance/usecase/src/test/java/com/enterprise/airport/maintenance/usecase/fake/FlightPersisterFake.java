@@ -21,4 +21,8 @@ public class FlightPersisterFake implements FlightPersister, FlightExtractor {
     public Optional<Flight> getById(FlightId flightId) {
         return Optional.ofNullable(data.get(flightId));
     }
+
+    public boolean isEmpty() {
+        return data.isEmpty();
+    }
 }

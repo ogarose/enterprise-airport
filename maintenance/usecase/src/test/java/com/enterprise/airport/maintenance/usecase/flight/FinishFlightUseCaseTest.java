@@ -1,6 +1,6 @@
 package com.enterprise.airport.maintenance.usecase.flight;
 
-import com.enterprise.airport.common.types.common.Airport;
+import com.enterprise.airport.common.types.domain.common.Airport;
 import com.enterprise.airport.maintenance.domain.flight.Flight;
 import com.enterprise.airport.maintenance.domain.flight.FlightStatus;
 import com.enterprise.airport.maintenance.usecase.Fixtures;
@@ -37,11 +37,11 @@ class FinishFlightUseCaseTest {
         Flight flight = Fixtures.generateRegisteredFlight();
         flightPersisterFake.save(flight);
 
-        var request = new FinishFlightRequest(
+        var request = FinishFlightRequest.from(
                 flight.getId().getValue(),
                 Airport.CA.name(),
                 7L
-        );
+        ).get();
 
         usecase.execute(request);
 
@@ -54,19 +54,22 @@ class FinishFlightUseCaseTest {
     }
 
     @Test
-    void throwsExceptionForNotExistedFlight() {
+    void returnsErrorForNotExistedFlight() {
         var usecase = new FinishFlightUseCase(
                 flightPersisterFake,
                 flightPersisterFake
         );
 
-
-        var request = new FinishFlightRequest(
+        var request = FinishFlightRequest.from(
                 777L,
                 Airport.CA.name(),
                 7L
-        );
+        ).get();
 
-        Assertions.assertThrows(FinishFlightUseCase.IllegalFlightIdException.class, () -> usecase.execute(request));
+        var result = usecase.execute(request);
+
+        Assertions.assertTrue(result.isLeft());
+        Assertions.assertEquals(FinishFlightError.IllegalFlightId.class, result.getLeft().getClass());
+        Assertions.assertTrue(flightPersisterFake.isEmpty());
     }
 }
